@@ -1,0 +1,7 @@
+Candidate                     Votes Received      % Votes   
+------------------------------------------------------------
+Lincoln                       5000                26.0      
+Parks                         2000                10.4      
+Shakespeare                   8000                41.6      
+Ghandi                        2500                13.0      
+Ashe                          1750                9.1       

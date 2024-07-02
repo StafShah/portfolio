@@ -1,0 +1,12 @@
+Problem 1 Inputs:
+"ss#ss"
+"fdnejwo"
+"win#win"
+
+Problem 2 Inputs:
+155 16
+3553 8
+0 0
+
+Problem 3 Inputs:
+1 2 4 * /

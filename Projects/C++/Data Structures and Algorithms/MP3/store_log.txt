@@ -1,0 +1,120 @@
+Minute 1: Customer 1 has entered. (Service time: 3 minutes) Now servicing customer 1. 
+Minute 2: 
+Minute 3: 
+Minute 4: No customers in line.
+Minute 5: Customer 2 has entered. (Service time: 1 minutes) Now servicing customer 2. 
+Minute 6: No customers in line.
+Minute 7: No customers in line.
+Minute 8: Customer 3 has entered. (Service time: 2 minutes) Now servicing customer 3. 
+Minute 9: 
+Minute 10: Customer 4 has entered. (Service time: 2 minutes) Now servicing customer 4. 
+Minute 11: Customer 5 has entered. (Service time: 3 minutes)
+Minute 12: Customer 4 has left. Now servicing customer 5. 
+Minute 13: 
+Minute 14: Customer 6 has entered. (Service time: 2 minutes)
+Minute 15: Customer 5 has left. Now servicing customer 6. 
+Minute 16: 
+Minute 17: No customers in line.
+Minute 18: Customer 7 has entered. (Service time: 1 minutes) Now servicing customer 7. 
+Minute 19: No customers in line.
+Minute 20: No customers in line.
+Minute 21: Customer 8 has entered. (Service time: 1 minutes) Now servicing customer 8. 
+Minute 22: Customer 9 has entered. (Service time: 2 minutes) Now servicing customer 9. 
+Minute 23: 
+Minute 24: No customers in line.
+Minute 25: No customers in line.
+Minute 26: Customer 10 has entered. (Service time: 3 minutes) Now servicing customer 10. 
+Minute 27: 
+Minute 28: Customer 11 has entered. (Service time: 4 minutes)
+Minute 29: Customer 10 has left. Now servicing customer 11. 
+Minute 30: Customer 12 has entered. (Service time: 4 minutes)
+Minute 31: Customer 13 has entered. (Service time: 1 minutes)
+Minute 32: 
+Minute 33: Customer 14 has entered. (Service time: 1 minutes) Now servicing customer 12. 
+Minute 34: Customer 15 has entered. (Service time: 1 minutes)
+Minute 35: 
+Minute 36: Customer 16 has entered. (Service time: 2 minutes)
+Minute 37: Customer 12 has left. Now servicing customer 13. 
+Minute 38: Customer 13 has left. Now servicing customer 14. 
+Minute 39: Customer 17 has entered. (Service time: 1 minutes) Now servicing customer 15. 
+Minute 40: Customer 15 has left. Now servicing customer 16. 
+Minute 41: Customer 18 has entered. (Service time: 1 minutes)
+Minute 42: Customer 16 has left. Now servicing customer 17. 
+Minute 43: Customer 19 has entered. (Service time: 3 minutes) Now servicing customer 18. 
+Minute 44: Customer 18 has left. Now servicing customer 19. 
+Minute 45: 
+Minute 46: Customer 20 has entered. (Service time: 3 minutes)
+Minute 47: Customer 19 has left. Now servicing customer 20. 
+Minute 48: Customer 21 has entered. (Service time: 1 minutes)
+Minute 49: 
+Minute 50: Customer 20 has left. Now servicing customer 21. 
+Minute 51: No customers in line.
+Minute 52: Customer 22 has entered. (Service time: 1 minutes) Now servicing customer 22. 
+Minute 53: Customer 23 has entered. (Service time: 2 minutes) Now servicing customer 23. 
+Minute 54: Customer 24 has entered. (Service time: 2 minutes)
+Minute 55: Customer 23 has left. Now servicing customer 24. 
+Minute 56: 
+Minute 57: Customer 25 has entered. (Service time: 4 minutes) Now servicing customer 25. 
+Minute 58: 
+Minute 59: 
+Minute 60: 
+Minute 61: Customer 26 has entered. (Service time: 4 minutes) Now servicing customer 26. 
+Minute 62: 
+Minute 63: 
+Minute 64: 
+Minute 65: Customer 27 has entered. (Service time: 1 minutes) Now servicing customer 27. 
+Minute 66: No customers in line.
+Minute 67: No customers in line.
+Minute 68: No customers in line.
+Minute 69: Customer 28 has entered. (Service time: 4 minutes) Now servicing customer 28. 
+Minute 70: 
+Minute 71: Customer 29 has entered. (Service time: 1 minutes)
+Minute 72: 
+Minute 73: Customer 28 has left. Now servicing customer 29. 
+Minute 74: No customers in line.
+Minute 75: Customer 30 has entered. (Service time: 2 minutes) Now servicing customer 30. 
+Minute 76: Customer 31 has entered. (Service time: 1 minutes)
+Minute 77: Customer 30 has left. Now servicing customer 31. 
+Minute 78: No customers in line.
+Minute 79: Customer 32 has entered. (Service time: 4 minutes) Now servicing customer 32. 
+Minute 80: 
+Minute 81: Customer 33 has entered. (Service time: 4 minutes)
+Minute 82: 
+Minute 83: Customer 32 has left. Now servicing customer 33. 
+Minute 84: 
+Minute 85: Customer 34 has entered. (Service time: 3 minutes)
+Minute 86: 
+Minute 87: Customer 35 has entered. (Service time: 2 minutes) Now servicing customer 34. 
+Minute 88: Customer 36 has entered. (Service time: 3 minutes)
+Minute 89: 
+Minute 90: Customer 37 has entered. (Service time: 4 minutes) Now servicing customer 35. 
+Minute 91: 
+Minute 92: Customer 35 has left. Now servicing customer 36. 
+Minute 93: Customer 38 has entered. (Service time: 3 minutes)
+Minute 94: Customer 39 has entered. (Service time: 4 minutes)
+Minute 95: Customer 36 has left. Now servicing customer 37. 
+Minute 96: 
+Minute 97: 
+Minute 98: Customer 40 has entered. (Service time: 3 minutes)
+Minute 99: Customer 37 has left. Now servicing customer 38. 
+Minute 100: 
+Minute 101: Customer 41 has entered. (Service time: 3 minutes)
+Minute 102: Customer 38 has left. Now servicing customer 39. 
+Minute 103: 
+Minute 104: Customer 42 has entered. (Service time: 2 minutes)
+Minute 105: 
+Minute 106: Customer 39 has left. Now servicing customer 40. 
+Minute 107: 
+Minute 108: Customer 43 has entered. (Service time: 2 minutes)
+Minute 109: Customer 40 has left. Now servicing customer 41. 
+Minute 110: Customer 44 has entered. (Service time: 1 minutes)
+Minute 111: 
+Minute 112: Customer 45 has entered. (Service time: 1 minutes) Now servicing customer 42. 
+Minute 113: 
+Minute 114: Customer 46 has entered. (Service time: 2 minutes) Now servicing customer 43. 
+Minute 115: 
+Minute 116: Customer 47 has entered. (Service time: 4 minutes) Now servicing customer 44. 
+Minute 117: Customer 48 has entered. (Service time: 3 minutes) Now servicing customer 45. 
+Minute 118: Customer 45 has left. Now servicing customer 46. 
+Minute 119: 
+Minute 120: Customer 49 has entered. (Service time: 1 minutes) Now servicing customer 47. 

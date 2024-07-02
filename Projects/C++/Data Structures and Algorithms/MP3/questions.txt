@@ -1,0 +1,3 @@
+1. The maximum queue size averages about 3 per every run.
+2. A customer on average waits at a maximum wait time of 7 minutes
+3. We observe significantly larger average waiting times and queues per run
