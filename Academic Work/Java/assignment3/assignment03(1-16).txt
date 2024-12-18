@@ -1,0 +1,139 @@
+1)
+a. Valid
+b. Valid
+c. Valid
+d. Not valid, string type is not compatible with double input parameter
+e. Not valid, three parameters are expected for the cube function
+f. Valid (int can be passed as double parameter)
+
+2) 
+line 2: no return type on method definition AND no parameter type for m
+fix: public static void method1(int n, int m){
+
+line 4: double passed into method that expects int parameter
+fix: method2(3); (or any other integer)
+
+line 10/11: method has no explicit return at the end of the function which leads to compilation error
+fix: add new line with return 0
+
+3)
+line 3: declaration of array is incorrect
+fix: double[] r = new double[100];
+
+line 5: length is attribute not method AND no semicolon necessary
+fix: for (int i = 0; i < r.length; i++)
+
+line 6: change parenthesis to brackets for index reference AND .random is a method
+fix: r[i] = Math.random() * 100;
+
+4) No, the array gets assigned to a new reference for an array of size 20
+
+5) False, a reference to the original array is passed
+
+6) 
+a. number is 3 and numbers[0] is 3
+b. 1 2 3 4 5
+
+7)
+a. Only one vararg can be allowed in a method
+b. The varargs parameter should always be the last parameter in a method
+c. A return cannot be a varargs
+
+8) An array of any primitive type except Booleans. No, it is a void method therefore it does not return a new array.
+
+9) 
+[7, 7, 7, 7]
+[2, 4, 7, 10]
+false
+
+10)
+1. 
+Number of strings is 4
+I
+have
+a
+dream
+
+2. 
+Number of strings is 1
+1 2 3
+
+3.
+Number of strings is 0
+
+11)
+1. Yes
+2. 2
+
+3. 
+6 5 
+4 3 
+2 1 
+
+4. 
+2
+4
+
+12)
+a. Invalid --> int[] list = new int[75]
+b. Invalid -->
+int size = 1; // or any other number
+double[] list = new double[size];
+c. Invalid --> int[] test = new int[10];
+d. Invalid --> double[] sales = new double[40.5]
+
+13)
+Scanner console = new Scanner(System.in);
+
+int[] myList = new int[10];
+
+for (int i = 0; i < myList.length; i++)
+	myList[i] = console.nextInt();
+
+for (int i = 0; i < myList.length; i++)
+	System.out.print(myList[i] + " ");
+System.out.println();
+
+14)
+When an array is prompted to return an index that is beyond the memory length of the array. Yes, Java checks.
+
+15) 
+a, b, d
+
+16)
+a. int[][] alpha = new int[10][20];
+b. 
+for (int i = 0; i < alpha.length; i++)
+	java.util.Arrays.fill(alpha[i], 5);
+c. 
+for (int i = 0; i < alpha.length; i++) {
+	if (i == 0) 
+		java.util.Arrays.fill(alpha[i], 1);
+	else
+		java.util.Arrays.fill(alpha[i], 2);
+}
+d.
+for (int j = 0; j < alpha[0].length; j++) {
+	for (int i = 0; i < alpha.length; i++) {
+		if (j == 0) alpha[i][j] = 5;
+		else alpha[i][j] = alpha[i][j - 1] * 2;
+	}
+}
+
+e.
+for (int i = 0; i < alpha.length; i++) {
+	for (int j = 0; j < alpha[0].length; j++) {
+		System.out.print(alpha[i][j] + " ");
+	}
+	System.out.println(" ");
+}
+
+f.
+for (int j = 0; j < alpha[0].length; j++) {
+	for (int i = 0; i < alpha.length; i++) {
+		System.out.print(alpha[i][j] + " ");
+	}
+	System.out.println(" ");
+}
+
+

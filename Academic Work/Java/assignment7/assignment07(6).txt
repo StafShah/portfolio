@@ -1,0 +1,49 @@
+import chapter13.*;
+
+public class Question6 {
+    static GeometricObject[] arr = {
+            new Square(4),
+            new Square(12.5),
+            new Square(1.25),
+            new Circle(10),
+            new Rectangle(3, 5)
+    };
+
+    public static void main(String[] args) {
+        for (GeometricObject shape : arr) {
+            if (shape instanceof Colorable) {
+                System.out.print("Area is " + shape.getArea() + " ");
+                ((Colorable) shape).howToColor();
+            } else {
+                System.out.println("Area is " + shape.getArea() + " ");
+            }
+        }
+    }
+
+}
+
+interface Colorable {
+    void howToColor();
+}
+
+class Square extends GeometricObject implements Colorable {
+    private double side;
+
+    public Square() {}
+
+    public Square(double side) { this.side = side; }
+
+    public double getSide() { return side; }
+
+    public void setSide( double side ) { this.side = side; }
+
+    @Override
+    public void howToColor() { System.out.println("Color all four sides"); }
+
+    @Override
+    public double getArea() { return side * side; }
+
+    @Override
+    public double getPerimeter() { return 4 * side; }
+
+}

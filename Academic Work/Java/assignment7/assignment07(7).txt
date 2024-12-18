@@ -1,0 +1,52 @@
+import chapter13.*;
+
+public class Question7 {
+
+    public static void main(String[] args) {
+        ComparableSquare square1 = new ComparableSquare(5);
+        ComparableSquare square2 = new ComparableSquare(8);
+
+        ComparableSquare largerSquare = (square1.compareTo(square2) > 0) ? square1 : square2;
+        System.out.println("Comparing the areas of two squares for sides 5 and 8");
+        System.out.println("The larger square has an area of: " + largerSquare.getArea());
+    }
+
+}
+
+interface Colorable {
+    void howToColor();
+}
+
+class Square extends GeometricObject implements Colorable {
+    private double side;
+
+    public Square() {}
+
+    public Square(double side) { this.side = side; }
+
+    public double getSide() { return side; }
+
+    public void setSide( double side ) { this.side = side; }
+
+    @Override
+    public void howToColor() { System.out.println("Color all four sides"); }
+
+    @Override
+    public double getArea() { return side * side; }
+
+    @Override
+    public double getPerimeter() { return 4 * side; }
+
+}
+
+class ComparableSquare extends Square implements Comparable<ComparableSquare> {
+
+    public ComparableSquare(double side) {
+        super(side);
+    }
+
+    @Override
+    public int compareTo(ComparableSquare other) {
+        return Double.compare(this.getArea(), other.getArea());
+    }
+}

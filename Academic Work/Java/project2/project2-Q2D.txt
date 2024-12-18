@@ -1,0 +1,43 @@
+package project2;
+
+// TankerShip extends Ship
+public class TankerShip extends Ship implements Comparable<TankerShip> {
+    private String liquidType;
+    private double capacity;
+
+    // Constructor
+    public TankerShip(String name, String year, String liquidType, double capacity) {
+        super(name, year);
+        this.liquidType = liquidType;
+        this.capacity = capacity;
+    }
+
+    // Accessors and Mutators
+    public String getLiquidType() {
+        return liquidType;
+    }
+
+    public void setLiquidType(String liquidType) {
+        this.liquidType = liquidType;
+    }
+
+    public double getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(double capacity) {
+        this.capacity = capacity;
+    }
+
+    // toString Method
+    @Override
+    public String toString() {
+        return super.toString() + "\nType: " + liquidType + "\nCapacity: " + capacity;
+    }
+
+    // compareTo Method
+    @Override
+    public int compareTo(TankerShip other) {
+        return this.liquidType.compareTo(other.liquidType);
+    }
+}

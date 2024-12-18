@@ -1,0 +1,119 @@
+import java.util.Arrays;
+
+public class Matrix<T extends Number> {
+    private T[][] data;
+    private int rows;
+    private int columns;
+
+    public Matrix(int rows, int columns) {
+        if (rows <= 0 || columns <= 0) {
+            throw new IllegalArgumentException("Rows and columns must be positive integers.");
+        }
+        this.rows = rows;
+        this.columns = columns;
+        this.data = (T[][]) new Number[rows][columns];
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("Creating a 2x2 matrix...");
+            Matrix<Integer> matrixA = new Matrix<>(2, 2);
+            Matrix<Integer> matrixB = new Matrix<>(2, 2);
+
+            System.out.println("Setting elements...");
+            matrixA.setElement(0, 0, 1);
+            matrixA.setElement(0, 1, 2);
+            matrixA.setElement(1, 0, 3);
+            matrixA.setElement(1, 1, 4);
+
+            matrixB.setElement(0, 0, 5);
+            matrixB.setElement(0, 1, 6);
+            matrixB.setElement(1, 0, 7);
+            matrixB.setElement(1, 1, 8);
+
+            System.out.println("Matrix A:");
+            matrixA.printMatrix();
+
+            System.out.println("Matrix B:");
+            matrixB.printMatrix();
+
+            System.out.println("Adding the matrices...");
+            Matrix<Integer> result = matrixA.add(matrixB);
+
+            System.out.println("Result of A + B:");
+            result.printMatrix();
+
+            System.out.println("Trying to add matrices of incompatible dimensions...");
+            Matrix<Integer> incompatibleMatrix = new Matrix<>(3, 2);
+            matrixA.add(incompatibleMatrix);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception: " + e.getMessage());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+
+    public void setElement(int row, int column, T value) {
+        validateIndices(row, column);
+        data[row][column] = value;
+    }
+
+    public T getElement(int row, int column) {
+        validateIndices(row, column);
+        return data[row][column];
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public Matrix<T> add(Matrix<T> other) {
+        if (this.rows != other.getRows() || this.columns != other.getColumns()) {
+            throw new IllegalArgumentException("Matrices must have the same dimensions for addition.");
+        }
+
+        Matrix<T> result = new Matrix<>(rows, columns);
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                T value1 = this.getElement(i, j);
+                T value2 = other.getElement(i, j);
+                result.setElement(i, j, addNumbers(value1, value2));
+            }
+        }
+
+        return result;
+    }
+
+    public void printMatrix() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(data[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private void validateIndices(int row, int column) {
+        if (row < 0 || row >= rows || column < 0 || column >= columns) {
+            throw new IndexOutOfBoundsException("Invalid row or column index.");
+        }
+    }
+
+    private T addNumbers(T a, T b) {
+        if (a instanceof Integer) {
+            return (T) Integer.valueOf(a.intValue() + b.intValue());
+        } else if (a instanceof Double) {
+            return (T) Double.valueOf(a.doubleValue() + b.doubleValue());
+        } else if (a instanceof Float) {
+            return (T) Float.valueOf(a.floatValue() + b.floatValue());
+        } else if (a instanceof Long) {
+            return (T) Long.valueOf(a.longValue() + b.longValue());
+        }
+        throw new UnsupportedOperationException("Addition not supported for type " + a.getClass().getName());
+    }
+}

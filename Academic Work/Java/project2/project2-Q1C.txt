@@ -1,0 +1,35 @@
+package project2;
+
+public class Bill {
+    private int patientID;
+    private double pharmacyCharges;
+    private double doctorFee;
+    private double roomCharges;
+
+    // Constructor
+    public Bill(int patientID, double pharmacyCharges, double doctorFee, double roomCharges) {
+        this.patientID = patientID;
+        this.pharmacyCharges = pharmacyCharges;
+        this.doctorFee = doctorFee;
+        this.roomCharges = roomCharges;
+    }
+
+    // Getters
+    public int getPatientID() {
+        return patientID;
+    }
+
+    public double getTotalCharges() {
+        return pharmacyCharges + doctorFee + roomCharges;
+    }
+
+    // Print
+    @Override
+    public String toString() {
+        return "Patient ID: " + patientID +
+                "\nPharmacy Charges: $" + pharmacyCharges +
+                "\nDoctor Fee: $" + doctorFee +
+                "\nRoom Charges: $" + roomCharges +
+                "\nTotal Charges: $" + getTotalCharges();
+    }
+}

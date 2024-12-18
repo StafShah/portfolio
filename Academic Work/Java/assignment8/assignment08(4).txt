@@ -1,0 +1,27 @@
+public class Assignment8Q4 {
+    public static void main(String[] args) {
+        try {
+            throw new ExceptionB("This is an ExceptionB");
+        }
+
+        catch (ExceptionA exA) {
+            System.out.println("Caught ExceptionA: " + exA.getMessage());
+        }
+        catch (ExceptionB exB) {
+            System.out.println("Caught ExceptionB: " + exB.getMessage());
+        }
+        
+    }
+}
+
+class ExceptionA extends Exception {
+    public ExceptionA(String message) {
+        super(message);
+    }
+}
+
+class ExceptionB extends ExceptionA {
+    public ExceptionB(String message) {
+        super(message);
+    }
+}

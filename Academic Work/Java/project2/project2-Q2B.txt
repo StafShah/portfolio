@@ -1,0 +1,32 @@
+package project2;
+
+public class CruiseShip extends Ship implements Comparable<CruiseShip> {
+    private int maxPassengers;
+
+    // Constructor
+    public CruiseShip(String name, String year, int maxPassengers) {
+        super(name, year);
+        this.maxPassengers = maxPassengers;
+    }
+
+    // Accessors and Mutators
+    public int getMaxPassengers() {
+        return maxPassengers;
+    }
+
+    public void setMaxPassengers(int maxPassengers) {
+        this.maxPassengers = maxPassengers;
+    }
+
+    // toString Method
+    @Override
+    public String toString() {
+        return super.toString() + "\nMaximum passengers: " + maxPassengers;
+    }
+
+    // compareTo Method
+    @Override
+    public int compareTo(CruiseShip other) {
+        return Integer.compare(this.maxPassengers, other.maxPassengers);
+    }
+}

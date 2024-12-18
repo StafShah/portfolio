@@ -1,0 +1,25 @@
+import java.math.BigInteger;
+
+public class Q6 {
+    public static void main(String[] args) {
+        BigInteger num = BigInteger.valueOf(Long.MAX_VALUE).add(BigInteger.ONE);
+
+        BigInteger three = BigInteger.valueOf(3);
+        BigInteger five = BigInteger.valueOf(5);
+
+        int count = 0;
+
+        while (count < 25) {
+            if (num.mod(three).equals(BigInteger.ZERO) && num.mod(five).equals(BigInteger.ZERO)) {
+                System.out.print(num + " ");
+                count++;
+
+                if (count % 5 == 0) {
+                    System.out.println();
+                }
+            }
+
+            num = num.add(BigInteger.ONE);
+        }
+    }
+}

@@ -1,0 +1,62 @@
+public class testAccount {
+    public static void main(String[] args) {
+        CheckingAccount c1 = new CheckingAccount(1, 35, 25);
+        CheckingAccount c2 = new CheckingAccount(2, 35, 25);
+        SavingsAccount s1 = new SavingsAccount(3, 15, 0.05);
+
+        System.out.println("Account before withdrawing $10");
+        System.out.println(c1.toString() + "\n");
+        System.out.println(c2.toString() + "\n");
+
+        c1.withdraw(10);
+        c2.withdraw(10);
+
+        System.out.println("\nAccount after withdrawing $10");
+        System.out.println(c1.toString() + "\n");
+        System.out.println(c2.toString() + "\n");
+
+        System.out.println(s1.toString() + "\n");
+
+        System.out.println("Comparing Accounts");
+        System.out.println(c1.equals(s1) ? "checking and savings have the same amount" : "checking and savings do not have the same amount");
+        System.out.println(c1.equals(c2) ? "checking accounts 1 and 2 have the same balance" : "checking accounts 1 and 2 do not have the same balance");
+    }
+}
+
+class SavingsAccount extends Account {
+    private double interestRate;
+
+    SavingsAccount(int id, double balance, double rate) {
+        super(id, balance);
+        this.interestRate = rate;
+    }
+
+    public double getRate() { return this.interestRate; }
+
+    @Override
+    public String toString() { return "SavingsAccount\nInterest Rate: " + this.interestRate + "\n" + super.toString(); }
+
+    @Override
+    public boolean equals(Account otherAccount) {
+        return (otherAccount).getBalance() == this.getBalance();
+    }
+}
+
+class CheckingAccount extends Account {
+    private double fee;
+
+    CheckingAccount(int id, double balance, double fee) {
+        super(id, balance);
+        this.fee = fee;
+    }
+
+    public double getFee() { return this.fee; }
+
+    @Override
+    public String toString() { return "Checking Account\nMonthly Fee: " + this.fee + "\n" + super.toString(); }
+
+    @Override
+    public boolean equals(Account otherAccount) {
+        return (otherAccount).getBalance() == this.getBalance();
+    }
+}

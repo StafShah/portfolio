@@ -1,0 +1,84 @@
+package project2;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class CodeProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueProgram = true;
+
+        System.out.println("Welcome to the Cipher program.");
+
+        while (continueProgram) {
+            System.out.println("Type 1 for Substitution Cipher.");
+            System.out.println("Type 2 for Shuffle Cipher.");
+            int cipherChoice = scanner.nextInt();
+
+            Cipher cipher;
+            if (cipherChoice == 1) {
+                System.out.println("What is the key (shift amount) for your code?");
+                int shift = scanner.nextInt();
+                cipher = new SubstitutionCipher(shift);
+                System.out.println(cipher.cipherType() + "-shift amount = " + shift);
+            } else if (cipherChoice == 2) {
+                System.out.println("What is the key (shuffle amount) for your code?");
+                int n = scanner.nextInt();
+                cipher = new ShuffleCipher(n);
+                System.out.println(cipher.cipherType() + "-shuffle amount = " + n);
+            } else {
+                System.out.println("Invalid choice.");
+                continue;
+            }
+
+            System.out.println("Enter input file name");
+            String inputFile = scanner.next();
+            System.out.println("Enter output file name");
+            String outputFile = scanner.next();
+
+            System.out.println("Encode (E) or Decode (D)");
+            char operation = scanner.next().toUpperCase().charAt(0);
+
+            try {
+                String inputText = readFile(inputFile);
+                String outputText;
+
+                if (operation == 'E' && cipher instanceof MessageEncoder) {
+                    outputText = ((MessageEncoder) cipher).encode(inputText);
+                } else if (operation == 'D' && cipher instanceof MessageDecoder) {
+                    outputText = ((MessageDecoder) cipher).decode(inputText);
+                } else {
+                    System.out.println("Invalid operation.");
+                    continue;
+                }
+
+                writeFile(outputFile, outputText);
+                System.out.println((operation == 'E' ? "Encoded" : "Decoded") + " text is saved in " + outputFile);
+
+            } catch (IOException e) {
+                System.out.println("Error reading or writing files: " + e.getMessage());
+            }
+
+            System.out.println("Do you want to do another message (Y/N)");
+            continueProgram = scanner.next().equalsIgnoreCase("Y");
+        }
+
+    }
+
+    private static String readFile(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+        }
+        reader.close();
+        return content.toString().trim();
+    }
+
+    private static void writeFile(String fileName, String content) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        writer.write(content);
+        writer.close();
+    }
+}

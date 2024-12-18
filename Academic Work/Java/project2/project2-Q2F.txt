@@ -1,0 +1,40 @@
+package project2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class ShipDemo {
+    public static void main(String[] args) {
+        // Create an ArrayList of Ship objects
+        ArrayList<Ship> ships = new ArrayList<>();
+
+        ships.add(new CruiseShip("Disney Magic", "1998", 2400));
+        ships.add(new CargoShip("Black Pearl", "1800", 50000));
+        ships.add(new TankerShip("Lollipop", "1960", "Oil", 500000.0));
+
+        // Display each ship's information
+        for (Ship ship : ships) {
+            System.out.println(ship);
+            System.out.println("----------------------------");
+        }
+
+        // Demonstrate sorting of CruiseShip objects
+        CruiseShip[] cruiseShips = {
+                new CruiseShip("Disney Magic1", "1998", 2400),
+                new CruiseShip("Disney Magic2", "2002", 2500),
+                new CruiseShip("Disney Magic3", "2011", 400)
+        };
+
+        System.out.println("Before sorting three objects of CruiseShip:");
+        for (CruiseShip cs : cruiseShips) {
+            System.out.println(cs);
+        }
+
+        // Sort the CruiseShip array
+        System.out.println("\nAfter sorting three objects of CruiseShip:");
+        Arrays.sort(cruiseShips);
+        for (CruiseShip cs : cruiseShips) {
+            System.out.println(cs);
+        }
+    }
+}

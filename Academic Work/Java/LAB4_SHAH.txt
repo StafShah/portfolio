@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class stringReader {
+    private static int maxLen = 0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter a string: ");
+        String input = scanner.nextLine();
+        String[] words = input.split(" ");
+
+        for (String word : words) {
+            if ((Character.toString(word.charAt(word.length() - 1)).matches("\\p{Punct}"))) {
+                maxLen = Integer.max(word.length() - 1, maxLen);
+            }
+            else {
+                maxLen = Integer.max(word.length(), maxLen);
+            }
+        }
+
+        int[] lengths = new int[maxLen];
+
+        for (String word : words) {
+            if (Character.toString(word.charAt(word.length() - 1)).matches("\\p{Punct}")) {
+                lengths[word.length() - 2] += 1;
+            } else {
+                lengths[word.length() - 1] += 1;
+            }
+        }
+
+        System.out.println("\nResult:\nLetter Count   Words");
+        for (int i = 0; i < lengths.length; i++) {
+            System.out.println(Integer.toString(i + 1) + "\t\t\t\t" + lengths[i]);
+        }
+    }
+}

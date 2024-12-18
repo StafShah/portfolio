@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Candidates {
+
+    public static int totalVotes(int[] votes) {
+        int sum = 0;
+        for (int vote : votes) {
+            sum += vote;
+        }
+        return sum;
+    }
+
+    public static String winner(String[] candidates, int[] votes) {
+        int maxVotes = votes[0];
+        String winner = candidates[0];
+
+        for (int i = 1; i < votes.length; i++) {
+            if (votes[i] > maxVotes) {
+                maxVotes = votes[i];
+                winner = candidates[i];
+            }
+        }
+
+        return winner;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] candidates = new String[5];
+        int[] votes = new int[5];
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter the last name of candidate " + (i + 1) + ": ");
+            candidates[i] = scanner.next();
+
+            System.out.print("Enter the votes received by " + candidates[i] + ": ");
+            votes[i] = scanner.nextInt();
+        }
+
+        int totalVotes = totalVotes(votes);
+
+        System.out.println("\nCandidate\tVotes Received\t% of Total Votes");
+        for (int i = 0; i < 5; i++) {
+            double percentage = ((double) votes[i] / totalVotes) * 100;
+            System.out.printf("%-10s\t%d\t\t%.2f\n", candidates[i], votes[i], percentage);
+        }
+
+        System.out.println("Total\t\t" + totalVotes);
+
+        String winner = winner(candidates, votes);
+        System.out.println("The Winner of the Election is " + winner + ".");
+
+        scanner.close();
+    }
+}

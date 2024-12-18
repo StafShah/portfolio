@@ -1,0 +1,52 @@
+1.
+a) No compile errors. Before JDK 1.5, generics were not introduced, which meant that ArrayList was a raw type and accepted any Object.
+b) Compile error of incompatible types. ArrayList specifies that the list can only contain objects of type Date.
+
+2.
+a) Potential error if get retrieves a type different than Date as ArrayList can store any object.
+b) The code is correct as the generic for the ArrayList ensures that get will return an object of type Date
+
+3. Benefits of casting include type safety, elimination of explicit casting, improved readability, and reusability.
+
+4. 
+public interface Comparable<T> {
+    int compareTo(T o);
+}
+
+5. No, such type parameters are erased during compilation. Instead:
+public ArrayList() { }
+
+6. Yes:
+class Example<K, V> {
+    private K key;
+    private V value;
+}
+
+7.
+Generic type in class:
+class Example<T> {
+    private T value;
+}
+
+Generic type in instance method:
+public <T> void method(T item) { }
+
+8.
+Generic static method:
+public static <T> void method(T item) { }
+
+Invoke generic static method:
+MyClass.<String>method("Hello"); 
+
+9. A bound generic type restricted to a specific range using extends or super.
+
+10.
+Unbounded wildcard allows any type.
+Bounded wildcard allows a type or its subtypes.
+Lower-bound wildcard allows a type or its supertypes.
+
+11.
+This replacement will only allow the two stacks to hold the same type. If they hold different types, a compile-time error will occur.
+
+12.
+This allows stack1 to hold any subtype of t, while stack2 can only hold type T. this allows any adds to stack2 to be safely casted.

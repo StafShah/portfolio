@@ -1,0 +1,178 @@
+import java.util.Scanner;
+
+public class SwimSchedules {
+    private static final int[][] jeff = new int[4][4];
+    private static final int[][] anna = new int[4][4];
+
+    public static void menu() {
+        System.out.println("Enter one of the following commands:");
+        System.out.println("p - Print schedules\ns - Schedule a slot\nf - Free a slot");
+        System.out.println("i - Show slots available for individual lessons\ng - Show slots available for group lessons\nq - Quit");
+        System.out.print("Command: ");
+    }
+
+    public static void displaySchedules() {
+        System.out.println("Jeff:");
+        System.out.println("      Mon Tue Wed Thu");
+        int baseHr = 11;
+
+        for (int i = 0; i < 4; i++) {
+            String start = String.valueOf((baseHr + i) % 12 == 0 ? 12 : (baseHr + i) % 12);
+            String end = String.valueOf((baseHr + i + 1) % 12 == 0 ? 12 : (baseHr + i + 1) % 12);
+            System.out.printf("%-6s", start + "-" + end);
+
+            for (int j = 0; j < 4; j++) {
+                String outSlot = (jeff[j][i] == 1) ? "X" : "_";
+                System.out.printf("%-4s", outSlot);
+            }
+            System.out.println();
+        }
+
+        System.out.println("\nAnna:");
+        System.out.println("      Mon Tue Wed Thu");
+
+        for (int i = 0; i < 4; i++) {
+            String start = String.valueOf((baseHr + i) % 12 == 0 ? 12 : (baseHr + i) % 12);
+            String end = String.valueOf((baseHr + i + 1) % 12 == 0 ? 12 : (baseHr + i + 1) % 12);
+            System.out.printf("%-6s", start + "-" + end);
+
+            for (int j = 0; j < 4; j++) {
+                String outSlot = (anna[j][i] == 1) ? "X" : "_";
+                System.out.printf("%-4s", outSlot);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+
+    public static void scheduleSlot() {
+        Scanner parser = new Scanner(System.in);
+        String instructor, day, slot;
+
+        while (true) {
+            System.out.print("Select instructor (1 - Jeff, 2 - Anna): ");
+            instructor = parser.nextLine();
+            System.out.print("Select Day (1 - Mon, 2 - Tue, 3 - Wed, 4 - Thu): ");
+            day = parser.nextLine();
+            System.out.print("Select Slot (1 - 11-12, 2 - 12-1, 3 - 1-2, 4 - 2-3): ");
+            slot = parser.nextLine();
+            if (!(instructor.matches("[12]")) || !(day.matches("[1234]")) || !(slot.matches("[1234]"))) {
+                System.out.println("Invalid input!");
+            } else {
+                break;
+            }
+        }
+
+        int[][] target = (Integer.parseInt(instructor) == 1) ? jeff : anna;
+        if (target[Integer.parseInt(day) - 1][Integer.parseInt(slot) - 1] == 1) {
+            System.out.println("This time is already booked!\n");
+        } else {
+            target[Integer.parseInt(day) - 1][Integer.parseInt(slot) - 1] = 1;
+            System.out.println("Slot scheduled.\n");
+        }
+    }
+
+    public static void freeSlot() {
+        Scanner parser = new Scanner(System.in);
+        String instructor, day, slot;
+
+        while (true) {
+            System.out.print("Select instructor (1 - Jeff, 2 - Anna): ");
+            instructor = parser.nextLine();
+            System.out.print("Select Day (1 - Mon, 2 - Tue, 3 - Wed, 4 - Thu): ");
+            day = parser.nextLine();
+            System.out.print("Select Slot (1 - 11-12, 2 - 12-1, 3 - 1-2, 4 - 2-3): ");
+            slot = parser.nextLine();
+            if (!(instructor.matches("[12]")) || !(day.matches("[1234]")) || !(slot.matches("[1234]"))) {
+                System.out.println("Invalid input!");
+            } else {
+                break;
+            }
+        }
+
+        int[][] target = (Integer.parseInt(instructor) == 1) ? jeff : anna;
+        if (target[Integer.parseInt(day) - 1][Integer.parseInt(slot) - 1] == 0) {
+            System.out.println("This time is already free!\n");
+        } else {
+            target[Integer.parseInt(day) - 1][Integer.parseInt(slot) - 1] = 0;
+            System.out.println("Slot freed.\n");
+        }
+    }
+
+    public static void showIndividualLessons() {
+        System.out.println("Slots marked with an 'I' are available for individual lessons:");
+        System.out.println("      Mon Tue Wed Thu");
+        int baseHr = 11;
+
+        for (int i = 0; i < 4; i++) {
+            String start = String.valueOf((baseHr + i) % 12 == 0 ? 12 : (baseHr + i) % 12);
+            String end = String.valueOf((baseHr + i + 1) % 12 == 0 ? 12 : (baseHr + i + 1) % 12);
+            System.out.printf("%-6s", start + "-" + end);
+
+            for (int j = 0; j < 4; j++) {
+                String outSlot = (jeff[j][i] == 0 || anna[j][i] == 0) ? "I" : "_";
+                System.out.printf("%-4s", outSlot);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void showGroupLessons() {
+        System.out.println("Slots marked with a 'G' are available for group lessons:");
+        System.out.println("      Mon Tue Wed Thu");
+        int baseHr = 11;
+
+        for (int i = 0; i < 4; i++) {
+            String start = String.valueOf((baseHr + i) % 12 == 0 ? 12 : (baseHr + i) % 12);
+            String end = String.valueOf((baseHr + i + 1) % 12 == 0 ? 12 : (baseHr + i + 1) % 12);
+            System.out.printf("%-6s", start + "-" + end);
+
+            for (int j = 0; j < 4; j++) {
+                String outSlot = (jeff[j][i] == 0 && anna[j][i] == 0) ? "G" : "_";
+                System.out.printf("%-4s", outSlot);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner parse = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            menu();
+            input = parse.nextLine().toLowerCase();
+
+            if (!(input.matches("[psfigq]"))) {
+                System.out.println("Invalid input! Please enter a valid command listed above.");
+                System.out.print("Command: ");
+                continue;
+            }
+
+            switch (input) {
+                case "p":
+                    displaySchedules();
+                    break;
+                case "s":
+                    scheduleSlot();
+                    break;
+                case "f":
+                    freeSlot();
+                    break;
+                case "i":
+                    showIndividualLessons();
+                    break;
+                case "g":
+                    showGroupLessons();
+                    break;
+                case "q":
+                    System.out.println("Exiting the program.");
+                    parse.close();
+                    return;
+            }
+        }
+    }
+}

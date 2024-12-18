@@ -1,0 +1,16 @@
+import java.lang.reflect.Field;
+
+public class ReflectionExample {
+    private String secret = "Original Secret";
+
+    public static void main(String[] args) throws Exception {
+        ReflectionExample example = new ReflectionExample();
+        System.out.println("Before modification: " + example.secret);
+
+        Field field = ReflectionExample.class.getDeclaredField("secret");
+        field.setAccessible(true); 
+        field.set(example, "Modified Secret"); 
+
+        System.out.println("After modification: " + example.secret);
+    }
+}

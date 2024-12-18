@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+public class Temperatures {
+
+    public static void getData(int[][] temps, Scanner scanner) {
+        System.out.println("Enter high temperature for each month:");
+        for (int i = 0; i < 12; i++) {
+            temps[i][0] = scanner.nextInt();
+        }
+
+        System.out.println("Enter low temperature for each month:");
+        for (int i = 0; i < 12; i++) {
+            temps[i][1] = scanner.nextInt();
+        }
+    }
+
+    public static double averageHigh(int[][] temps) {
+        int totalHigh = 0;
+        for (int i = 0; i < 12; i++) {
+            totalHigh += temps[i][0];
+        }
+        return (double) totalHigh / 12;
+    }
+
+    public static double averageLow(int[][] temps) {
+        int totalLow = 0;
+        for (int i = 0; i < 12; i++) {
+            totalLow += temps[i][1];
+        }
+        return (double) totalLow / 12;
+    }
+
+    public static int indexHighTemp(int[][] temps) {
+        int index = 0;
+        int highest = temps[0][0];
+        for (int i = 1; i < 12; i++) {
+            if (temps[i][0] > highest) {
+                highest = temps[i][0];
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    // Method to find the index of the lowest temperature
+    public static int indexLowTemp(int[][] temps) {
+        int index = 0;
+        int lowest = temps[0][1];
+        for (int i = 1; i < 12; i++) {
+            if (temps[i][1] < lowest) {
+                lowest = temps[i][1];
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[][] temps = new int[12][2];
+        getData(temps, scanner);
+
+        System.out.printf("Average high temperature: %.0f\n", averageHigh(temps));
+        System.out.printf("Average low temperature: %.0f\n", averageLow(temps));
+
+        int highIndex = indexHighTemp(temps);
+        int lowIndex = indexLowTemp(temps);
+        System.out.println("Highest temperature: " + temps[highIndex][0]);
+        System.out.println("Lowest temperature: " + temps[lowIndex][1]);
+
+        scanner.close();
+    }
+}

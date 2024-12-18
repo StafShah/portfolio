@@ -1,0 +1,67 @@
+package project2;
+
+public class ShuffleCipher extends Cipher implements MessageEncoder, MessageDecoder {
+    private int n;
+
+    public ShuffleCipher(int n) {
+        this.n = n;
+    }
+
+    @Override
+    public String cipherType() {
+        return "ShuffleCipher";
+    }
+
+    @Override
+    public String encode(String plainText) {
+        String shuffled = plainText;
+        for (int i = 0; i < n; i++) {
+            shuffled = shuffle(shuffled);
+        }
+        return shuffled;
+    }
+
+    @Override
+    public String decode(String cipherText) {
+        String unshuffled = cipherText;
+        for (int i = 0; i < n; i++) {
+            unshuffled = unshuffle(unshuffled);
+            System.out.println(unshuffled);
+        }
+        return unshuffled;
+    }
+
+    private String shuffle(String text) {
+        int mid = text.length() / 2;
+        StringBuilder shuffled = new StringBuilder();
+        for (int i = 0; i < mid; i++) {
+            shuffled.append(text.charAt(i));
+            if (i + mid < text.length()) {
+                shuffled.append(text.charAt(i + mid));
+            }
+        }
+        if (text.length() % 2 != 0) {
+            shuffled.append(text.charAt(text.length() - 1));
+        }
+        return shuffled.toString();
+    }
+
+    private String unshuffle(String text) {
+        int mid = (text.length() + 1) / 2;
+        StringBuilder firstHalf = new StringBuilder();
+        StringBuilder secondHalf = new StringBuilder();
+
+        for (int i = 0; i < text.length(); i++) {
+            if (i % 2 == 0) {
+                firstHalf.append(text.charAt(i));
+            } else {
+                secondHalf.append(text.charAt(i));
+            }
+        }
+
+        StringBuilder unshuffled = new StringBuilder();
+        unshuffled.append(firstHalf);
+        unshuffled.append(secondHalf);
+        return unshuffled.toString();
+    }
+}

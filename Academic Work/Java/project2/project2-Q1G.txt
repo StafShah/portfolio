@@ -1,0 +1,89 @@
+package project2;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class TestHospital {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            // Patient Information
+            System.out.print("Enter patient's ID: ");
+            int patientID = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            System.out.print("Enter patient's first name: ");
+            String firstName = scanner.nextLine();
+
+            System.out.print("Enter patient's last name: ");
+            String lastName = scanner.nextLine();
+
+            // Doctor Information
+            System.out.print("Enter doctor's first name: ");
+            String doctorFirstName = scanner.nextLine();
+
+            System.out.print("Enter doctor's last name: ");
+            String doctorLastName = scanner.nextLine();
+
+            System.out.print("Enter doctor's specialty: ");
+            String specialty = scanner.nextLine();
+            Doctor doctor = new Doctor(doctorFirstName, doctorLastName, specialty);
+
+            // Admit and Discharge Dates
+            System.out.print("Enter Admit Date (day/month/year): ");
+            String[] admitDateInput = scanner.nextLine().split("/");
+            Date admitDate = new Date(Integer.parseInt(admitDateInput[0]),
+                    Integer.parseInt(admitDateInput[1]),
+                    Integer.parseInt(admitDateInput[2]));
+
+            System.out.print("Enter Discharged Date (day/month/year): ");
+            String[] dischargeDateInput = scanner.nextLine().split("/");
+            Date dischargeDate = new Date(Integer.parseInt(dischargeDateInput[0]),
+                    Integer.parseInt(dischargeDateInput[1]),
+                    Integer.parseInt(dischargeDateInput[2]));
+
+            // Charges
+            System.out.print("Enter pharmacy Charges, room Rent, and doctor Fee: ");
+            double pharmacyCharges = scanner.nextDouble();
+            double roomCharges = scanner.nextDouble();
+            double doctorFee = scanner.nextDouble();
+            scanner.nextLine(); // Consume newline
+            Bill bill = new Bill(patientID, pharmacyCharges, doctorFee, roomCharges);
+
+            // Create Patient
+            Patient patient = new Patient(firstName, lastName, patientID, null, doctor, admitDate, dischargeDate);
+
+            // Output
+            System.out.println("\nPatient: " + patient);
+            System.out.printf("Pharmacy Charges: $ %.2f\n", pharmacyCharges);
+            System.out.printf("Room Charges: $ %.2f\n", roomCharges);
+            System.out.printf("Doctor's Fees: $ %.2f\n", doctorFee);
+            System.out.println("______________________________");
+            System.out.printf("Total Charges: $ %.2f\n", bill.getTotalCharges());
+
+            // Write to File
+            String fileName = firstName + lastName + ".txt";
+            try (FileWriter writer = new FileWriter(fileName)) {
+                writer.write("Patient: " + patient + "\n");
+                writer.write(String.format("Pharmacy Charges: $ %.2f\n", pharmacyCharges));
+                writer.write(String.format("Room Charges: $ %.2f\n", roomCharges));
+                writer.write(String.format("Doctor's Fees: $ %.2f\n", doctorFee));
+                writer.write("______________________________\n");
+                writer.write(String.format("Total Charges: $ %.2f\n", bill.getTotalCharges()));
+                System.out.println("File " + fileName + " written successfully.");
+            } catch (IOException e) {
+                System.err.println("Error writing to file: " + e.getMessage());
+            }
+
+            // Continue
+            System.out.print("Do you want to continue? Enter 'y' for yes, 'n' for no: ");
+            String choice = scanner.nextLine();
+            if (choice.equalsIgnoreCase("n")) {
+                break;
+            }
+        }
+        scanner.close();
+    }
+}

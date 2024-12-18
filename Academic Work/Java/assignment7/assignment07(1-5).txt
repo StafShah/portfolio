@@ -1,0 +1,51 @@
+1.
+a) true
+b) true
+c) false
+d) true
+e) true
+f) true
+g) true
+h) false
+i) true
+
+2.
+a) No, you cannot as interfaces can only be implemented by classes
+b) Yes, as it is valid syntax. However, you would want to typically declare it with the class that implements the interface
+c) The corrected code:
+interface A {
+    void m1();
+}
+
+class B implements A {
+    public void m1() { 
+        System.out.println("m1");
+    }
+}
+Class B needs to override the method in the interface using the public modifier.
+
+d) You get access to sorting methods, easier comparison between instances of the class, and natural ordering for instances.
+
+3. B, C, and D are valid interfaces. B follows the typical interface format, which declares a method without implementation. C is valid as it uses the default keyword, which allows for a body in the method. D is correct as it declares a static method in an interface, which is permissible for interfaces. A is incorrect as there is no explicit marking of static or default and therefore the method cannot have a body.
+
+4. 
+a) This does not run because the Tiger class does not implement the Edible interface
+b) This is invalid because x is of type Edible, and since Edible interface does not have a method sound(), attempting that call would cause a compilation error.
+c) This is invalid because the code attempts to cast x to type Animal. However, the call to sound is executed before the casting is done, which in turn will cause a compilation error.
+d) Chicken: cock-a-doodle-doo
+
+5. 
+a) Java Reflection is an API that allows a program to inspect and manipulate classes, methods, fields, and other elements of the Java language at runtime, regardless of their modifier (private or protected)
+b) The java.lang.Class object which can inspect a class using its methods. The java.lang.reflect.Constructor object that inspects instructor definitions of classes. The java.lang.reflect.Method object that inspects method definitions. The java.lang.reflect.Field object which inspects fields of a class.
+c) For a class MyClass, use the Class object as follows: Class<MyClass> aClass = MyClass.class
+d) The getDeclaredFields method retrieves all accessible and non-accessible fields of a class.
+e) You can access private fields by first obtaining the Field object and then calling setAccessible(true) to bypass Java access checks
+f) The Method class represents a method in a class or interface that allows inspection of its metadata and invocation
+g) You can invoke a method by calling Method.invoke(object, args...), where Method is the object representing the method you want to invoke
+h) getDeclaredMethods() returns all methods declared in the class (including private ones), while getMethods() returns only public methods, including those inherited from superclasses and interfaces
+i) Using Field.setAccessible(true) allows access to private and protected fields, bypassing normal Java access control checks. Without it, private fields are inaccessible.
+j) Reflection can impact the security of a Java application by potentially exposing private fields and methods, making it possible to break encapsulation and access sensitive data or functionality
+k) Yes, Reflection can access static methods using the Method object by invoking it with null as the target instance in Method.invoke()
+
+
+

@@ -1,0 +1,49 @@
+import java.io.IOException;
+
+class ExceptionA extends Exception {
+    public ExceptionA(String message) {
+        super(message);
+    }
+}
+
+class ExceptionB extends ExceptionA {
+    public ExceptionB(String message) {
+        super(message);
+    }
+}
+
+public class Assignment8Q3 {
+    public static void main(String[] args) {
+        try {
+            throw new IOException("IOException occurred!");
+        }
+        catch (Exception exception) {
+            System.out.println("Caught exception: " + exception.getClass().getName());
+            System.out.println("Message: " + exception.getMessage());
+        }
+
+        try {
+             throw new ExceptionA("ExceptionA occurred!");
+        }
+        catch (Exception exception) {
+            System.out.println("Caught exception: " + exception.getClass().getName());
+            System.out.println("Message: " + exception.getMessage());
+        }
+
+        try {
+            throw new ExceptionB("ExceptionB occurred!");
+        }
+        catch (Exception exception) {
+            System.out.println("Caught exception: " + exception.getClass().getName());
+            System.out.println("Message: " + exception.getMessage());
+        }
+
+        try {
+            throw new NullPointerException("NullPointerException occurred!");
+        }
+        catch (Exception exception) {
+            System.out.println("Caught exception: " + exception.getClass().getName());
+            System.out.println("Message: " + exception.getMessage());
+        }
+    }
+}

@@ -1,0 +1,32 @@
+package project2;
+
+public class CargoShip extends Ship implements Comparable<CargoShip> {
+    private int capacity;
+
+    // Constructor
+    public CargoShip(String name, String year, int capacity) {
+        super(name, year);
+        this.capacity = capacity;
+    }
+
+    // Accessors and Mutators
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    // toString Method
+    @Override
+    public String toString() {
+        return super.toString() + "\nCargo capacity: " + capacity + " tons";
+    }
+
+    // compareTo Method
+    @Override
+    public int compareTo(CargoShip other) {
+        return Integer.compare(this.capacity, other.capacity);
+    }
+}

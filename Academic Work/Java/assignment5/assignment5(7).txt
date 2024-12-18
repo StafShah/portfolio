@@ -1,0 +1,79 @@
+public class MyStringBuilder2 {
+    private char[] value;
+    private int size;
+    private int capacity;
+
+    public MyStringBuilder2(String s) {
+        this.size = s.length();
+        this.capacity = size * 2;
+        this.value = new char[capacity];
+
+        for (int i = 0; i < size; i++) {
+            this.value[i] = s.charAt(i);
+        }
+    }
+
+    public MyStringBuilder2 append(MyStringBuilder2 s) {
+        if (this.size + s.size > this.capacity) {
+            increaseCapacity(this.size + s.size);
+        }
+
+        for (int i = 0; i < s.size; i++) {
+            this.value[this.size++] = s.value[i];
+        }
+
+        return this;
+    }
+
+    public MyStringBuilder2 substring(int begin, int end) {
+        if (begin < 0 || end > size || begin > end) {
+            throw new IndexOutOfBoundsException("Invalid substring range");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = begin; i < end; i++) {
+            sb.append(this.value[i]);
+        }
+
+        return new MyStringBuilder2(sb.toString());
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+    public String toString() {
+        return new String(this.value, 0, size);
+    }
+
+    private void increaseCapacity(int newCapacity) {
+        this.capacity = newCapacity * 2;
+        char[] newArray = new char[capacity];
+
+        for (int i = 0; i < size; i++) {
+            newArray[i] = this.value[i];
+        }
+
+        this.value = newArray;
+    }
+
+    public static void main(String[] args) {
+        MyStringBuilder2 sb1 = new MyStringBuilder2("abcxyz");
+        MyStringBuilder2 sb2 = new MyStringBuilder2("123");
+        System.out.println("StringBuilder2 1: " + sb1);
+        System.out.println(("StringBuilder2 2: " + sb2));
+
+        sb1.append(sb2);
+
+        System.out.println("Appended result: " + sb1.toString());
+        System.out.println("Size of appended: " + sb1.getSize());
+        System.out.println("Capacity of string 1: " + sb1.getCapacity());
+
+        MyStringBuilder2 substring = sb1.substring(2, 5);
+        System.out.println("Substring from index 2 to 4: " + substring.toString());
+    }
+}

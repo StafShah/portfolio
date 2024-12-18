@@ -1,0 +1,27 @@
+package project2;
+
+public class Doctor extends Person {
+    private String specialty;
+
+    // Constructor
+    public Doctor(String firstName, String lastName, String specialty) {
+        super(firstName, lastName);
+        this.specialty = specialty;
+    }
+
+    // Getter
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    // Setter
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    // Print
+    @Override
+    public String toString() {
+        return super.toString() + " (Specialty: " + specialty + ")";
+    }
+}

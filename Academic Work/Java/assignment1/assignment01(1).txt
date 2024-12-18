@@ -1,0 +1,20 @@
+1.
+a) An interpreted language is a language where the implementations can be executed directly as-is, whereas a compiled language requries a conversion into machine code before the processor executes it
+b) Java Development Kit; Java Runtime Environment
+c) .java; .class
+d) javac filename.java
+e) java filename
+f) The Java Virtual Machine, which interprets Java bytecode and provides a runtime environment for Java apps
+g) NumberFormatException
+h) 2.5
+2
+i) No you cannot cast between booleans and integers
+j) The types are char, byte, short, or int; Fall-through behavior occurs where all following statements are executed, regardless of if they match, until a break is encountered
+k) y = 1
+x = 3; y = 3;
+if (x + 3 == 6) {
+    y = 1;
+} else {
+    y += 1;
+}
+l) The Math class in java is part of the java.lang package, which is imported by default

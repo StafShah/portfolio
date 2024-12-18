@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+public class EC3 {
+    public static void main(String[] args) {
+        ArrayList<Integer> intList = new ArrayList<>();
+        intList.add(14);
+        intList.add(24);
+        intList.add(4);
+        intList.add(42);
+        intList.add(5);
+
+        System.out.println("List1 before sorting: " + intList);
+        sort(intList);
+        System.out.println("List1 after sorting: " + intList);
+
+        ArrayList<Double> doubleList = new ArrayList<>();
+        doubleList.add(14.5);
+        doubleList.add(24.3);
+        doubleList.add(4.5);
+        doubleList.add(42.1);
+        doubleList.add(5.0);
+
+        System.out.println("\nList2 before sorting: " + doubleList);
+        sort(doubleList);
+        System.out.println("List2 after sorting: " + doubleList);
+    }
+    
+    
+    public static <E extends Comparable<E>> void sort(ArrayList<E> list) {
+        int n = list.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (list.get(j).compareTo(list.get(minIndex)) < 0) {
+                    minIndex = j;
+                }
+            }
+
+            if (minIndex != i) {
+                E temp = list.get(i);
+                list.set(i, list.get(minIndex));
+                list.set(minIndex, temp);
+            }
+        }
+    }
+}

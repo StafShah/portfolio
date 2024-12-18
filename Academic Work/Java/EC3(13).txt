@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class EC3 {
+    public static void main(String[] args) {
+        ArrayList<Integer> intList = new ArrayList<>();
+        intList.add(14);
+        intList.add(24);
+        intList.add(14);
+        intList.add(42);
+        intList.add(25);
+
+        System.out.println("List 1 Before: " + intList);
+        ArrayList<Integer> intListAfter = removeDuplicates(intList);
+        System.out.println("List 1 After: " + intListAfter);
+
+        ArrayList<Double> doubleList = new ArrayList<>();
+        doubleList.add(14.5);
+        doubleList.add(25.25);
+        doubleList.add(14.4);
+        doubleList.add(42.1);
+        doubleList.add(25.25);
+
+        System.out.println("List 2 Before: " + doubleList);
+        ArrayList<Double> doubleListAfter = removeDuplicates(doubleList);
+        System.out.println("List 2 After: " + doubleListAfter);
+    }
+
+    public static <E> ArrayList<E> removeDuplicates(ArrayList<E> list) {
+        HashSet<E> check = new HashSet<>();
+        ArrayList<E> result = new ArrayList<>();
+
+        for (E element : list) {
+            if (check.add(element)) { // add returns false if element is already in the set
+                result.add(element);
+            }
+        }
+
+        return result;
+    }
+}

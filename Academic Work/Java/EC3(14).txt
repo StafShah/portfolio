@@ -1,0 +1,47 @@
+public class EC3 {
+    public static void main(String[] args) {
+        Integer[][] int2DArray = {
+                {1, 9, 3},
+                {4, 4, 6}
+        };
+        System.out.println("2D 1:");
+        print2DArray(int2DArray);
+        System.out.println("2D 1 max: " + max(int2DArray));
+
+        Double[][] double2DArray = {
+                {1.5, 2.25, 3.5},
+                {4.3, 6.2, 2.1}
+        };
+        System.out.println("\n2D 2:");
+        print2DArray(double2DArray);
+        System.out.println("2D 2 max: " + max(double2DArray));
+    }
+
+
+    public static <E extends Comparable<E>> E max(E[][] list) {
+        E maxElement = list[0][0];
+
+        for (E[] row : list) {
+            for (E element : row) {
+                if (element.compareTo(maxElement) > 0) {
+                    maxElement = element;
+                }
+            }
+        }
+        return maxElement;
+    }
+
+
+    public static <E> void print2DArray(E[][] array) {
+        for (E[] row : array) {
+            System.out.print("[");
+            for (int i = 0; i < row.length; i++) {
+                System.out.print(row[i]);
+                if (i < row.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
+    }
+}

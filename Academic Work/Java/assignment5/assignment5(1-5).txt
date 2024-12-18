@@ -1,0 +1,84 @@
+1.
+a) 
+Date and Random reside in the java.util package. System and Math reside in the java.lang package
+b) 
+Integer to string: Integer.toString(int num)
+Numeric string to integer: Integer.parseInt(String s, int radix) -- radix = 10 when converting to decimal
+Double to string: Double.toString(int num)
+Numeric string to double:  Double.parseDouble(String s, int radix) -- radix = 10 when converting to decimal
+c) 
+x is 7
+y is 4
+z is 11
+d)
+The statement:
+String s = "Welcome to Java';
+This is because it avoids unnecessary object creation and instead uses the string pool. Unless a distinct String object is needed, this statement above is more memory efficient.
+e) No, the String object is immutable
+f) 0
+g) The methods for modifying the buffer in StringBuffer are synchronized (only one task is allowed to execute methods)
+h) 
+StringBuilder sb = new Str ingBuilder(s);
+sb.reverse();                            
+String reversedString = sb.toString();
+i)
+StringBuilder sb = new StringBuilder(s);        
+sb.delete(6, 11);                               
+String modifiedString = sb.toString();
+j) 
+Java
+Java and HTML
+
+2.
+Autoboxing is the automatic conversion of a primitive type to its corresponding wrapper class. Autounboxing is the conversion of a wrapper class object to its corresponding primitive type.
+a) Valid
+b) Valid
+c) Invalid, primitive int cannot be converted to wrapper Double
+d) Valid
+e) Valid
+f) Valid
+
+3.
+a) true
+b) false
+c) true
+d) true
+e) true
+f) Welcome to HTML
+g) WelcVme tV Java
+h) WelcVTme tVT Java
+i) WelcTme to Java
+j) Welcome to Java
+
+4.
+a) Java is fun
+b) JavaHTML
+c) Javis funa
+d) JaHTMLva
+e) v
+f) 4
+g) Jav
+h) Ja
+i) avaJ
+j) JComputera
+k) av
+l) ava
+
+5.
+ab*c: Expression must start with a, followed by zero or more b's, and ending with c.
+
+ab+c: Expression must start with a, followed by one or more b's, and ending with c.
+
+ab?c: Expression must start with a, followed by zero or one b, and ending with c.
+
+.: Expression must match any single character (except a newline).
+
+ab{1,3}c: Expression must start with a, followed by 1 to 3 b's, and ending with c.
+
+red|blue: Expression must match either the word red or the word blue.
+
+[0-9]: Expression must match any single digit between 0 and 9.
+
+[a-zA-Z0-9]: Expression must match any single alphanumeric character (lowercase, uppercase, or digit).
+
+Expression for year: ^\d{2}(\d{2})?$

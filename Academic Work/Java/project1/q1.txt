@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class MorseCode {
+    private static final char[] englishLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    private static final String[] morseCode = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---",
+            "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
+            "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----." };
+
+    public static void menu() {
+        System.out.println("Hello, this program allows you to translate between English text and Morse code\n");
+        System.out.println("Please select one of the below options:");
+        System.out.println("*** Enter 't' for encoding\n*** Enter 'm' for decoding\n*** Enter 'e' to exit the program");
+    }
+
+    public static String textToMorse(String text) {
+        StringBuilder morse = new StringBuilder();
+
+        text = text.toUpperCase();
+        for (char c : text.toCharArray()) {
+            if (c == ' ') {
+                morse.append("   ");
+            } else {
+                for (int i = 0; i < englishLetters.length; i++) {
+                    if (c == englishLetters[i]) {
+                        morse.append(morseCode[i]).append(" ");
+                        break;
+                    }
+                }
+            }
+        }
+        return morse.toString().trim();
+    }
+
+
+    public static String morseToText(String morse) {
+        StringBuilder text = new StringBuilder();
+        String[] words = morse.split("   ");
+
+        for (String word : words) {
+            String[] letters = word.split(" ");
+            for (String letter : letters) {
+                for (int i = 0; i < morseCode.length; i++) {
+                    if (letter.equals(morseCode[i])) {
+                        text.append(englishLetters[i]);
+                        break;
+                    }
+                }
+            }
+            text.append(" ");
+        }
+        return text.toString().trim();
+    }
+
+    public static void main(String[] args) {
+        Scanner parse = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            menu();
+            input = parse.nextLine().toLowerCase();
+
+
+            while (!(input.matches("[tme]"))) {
+                System.out.println("Invalid input! Please enter 't' for encoding, 'm' for decoding, or 'e' to exit.");
+                input = parse.nextLine().toLowerCase();
+            }
+
+            if (input.equals("t")) {
+                System.out.println("Enter the text you want to encode to Morse code: ");
+                String text = parse.nextLine();
+                String morse = textToMorse(text);
+                System.out.println("Morse code: " + morse);
+            } else if (input.equals("m")) {
+                System.out.println("Enter the Morse code you want to decode (use one space between letters and three spaces between words): ");
+                String morse = parse.nextLine();
+                String text = morseToText(morse);
+                System.out.println("Decoded text: " + text);
+            } else if (input.equals("e")) {
+                System.out.println("Exiting the program.");
+                break;
+            }
+        }
+
+        parse.close();
+    }
+}

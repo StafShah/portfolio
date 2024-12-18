@@ -1,0 +1,42 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public class Assignment8Q5 {
+
+    public static void main(String[] args) {
+        try {
+            Scanner scanner = new Scanner(new File("numbers.txt"));
+
+            int[] numCount = new int[5];
+
+            while (scanner.hasNext()) {
+                int rating = scanner.nextInt();
+
+                if (rating >= 1 && rating <= 5) {
+                    numCount[rating - 1]++;
+                } else {
+                    System.out.println("Invalid rating encountered: " + rating);
+                }
+            }
+            scanner.close();
+
+            PrintWriter writer = new PrintWriter("output.txt");
+
+            writer.printf("Rating\tFrequency%n");
+
+            for (int i = 0; i < numCount.length; i++) {
+                writer.printf("%d\t\t%d%n", i + 1, numCount[i]);
+            }
+
+            writer.close();
+            System.out.println("Frequencies written to output.txt successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found. Ensure that 'numbers.txt' exists in the correct directory.");
+        } catch (NoSuchElementException e) {
+            System.out.println("Error: Malformed data in 'numbers.txt'. Ensure the file contains valid integers.");
+        }
+    }
+}
